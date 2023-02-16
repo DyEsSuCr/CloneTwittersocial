@@ -1,9 +1,12 @@
 import app from './app.js'
 import { sequelize } from './database/db.js'
 
+import './models/Tweets.js'
+import './models/Users.js'
+
 async function main() {
   try {
-    await sequelize.sync()
+    await sequelize.sync({ force: true })
 
     app.listen(app.get('port'), () => {
       console.log(`Server on port ${app.get('port')}`)
