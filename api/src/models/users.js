@@ -1,6 +1,8 @@
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../database/db.js'
 
+import { Tweet } from './Tweets.js'
+
 export const User = sequelize.define('users', {
   id: {
     type: DataTypes.UUID,
@@ -43,4 +45,14 @@ export const User = sequelize.define('users', {
     type: DataTypes.STRING,
     allowNull: true,
   },
+})
+
+User.hasMany(Tweet, {
+  foreignKey: 'userId',
+  sourceKey: 'id',
+})
+
+Tweet.belongsTo(User, {
+  foreignKey: 'userId',
+  targetKey: 'id',
 })
