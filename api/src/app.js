@@ -4,7 +4,8 @@ import cors from 'cors'
 
 import { port } from './config.js'
 
-// import employeesRoutes from './routes/employees.routes.js'
+import usersRoutes from './routes/users.routes.js'
+import tweetsRoutes from './routes/tweets.routes.js'
 
 // NOTE: App
 const app = express()
@@ -17,7 +18,8 @@ app.use(express.json())
 app.use(cors())
 
 // NOTE: Routes
-// app.use('/api', employeesRoutes)
+app.use('/api', usersRoutes)
+app.use('/api', tweetsRoutes)
 
 app.use((req, res) => {
   res.status(404).json({
