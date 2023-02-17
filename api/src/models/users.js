@@ -10,15 +10,15 @@ export const User = sequelize.define('users', {
     defaultValue: DataTypes.UUIDV4,
   },
   password: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(60),
     allowNull: false,
   },
   name: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(120),
     allowNull: true,
   },
   username: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(60),
     allowNull: false,
   },
   state: {
@@ -26,7 +26,7 @@ export const User = sequelize.define('users', {
     defaultValue: true,
   },
   email: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(40),
     allowNull: false,
   },
   avatar: {
@@ -38,11 +38,11 @@ export const User = sequelize.define('users', {
     allowNull: true,
   },
   biography: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING(180),
     allowNull: true,
   },
   web: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(120),
     allowNull: true,
   },
 })

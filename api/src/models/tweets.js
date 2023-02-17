@@ -8,7 +8,7 @@ export const Tweet = sequelize.define('tweets', {
     defaultValue: DataTypes.UUIDV4,
   },
   tweet: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING(180),
     allowNull: false,
   },
   state: {
