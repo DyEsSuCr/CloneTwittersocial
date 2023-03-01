@@ -3,18 +3,18 @@ import express from 'express'
 import cors from 'cors'
 
 // NOTE: Node
-// import path from 'path'
-// import { fileURLToPath } from 'url'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 // NOTE: Local
 import { port } from './config.js'
 
-import usersRoutes from './routes/users.routes.js'
-import tweetsRoutes from './routes/tweets.routes.js'
+import usersRoutes from './routes/users.js'
+import tweetsRoutes from './routes/tweets.js'
 
 // NOTE: Variables
-// const __filename = fileURLToPath(import.meta.url)
-// const __dirname = path.dirname(__filename)
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 // NOTE: App Init
 const app = express()
@@ -31,7 +31,7 @@ app.use('/api', usersRoutes)
 app.use('/api', tweetsRoutes)
 
 // NOTE: Static Files
-// app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use((req, res) => {
   res.status(404).json({
