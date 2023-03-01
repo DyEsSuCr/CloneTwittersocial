@@ -1,8 +1,6 @@
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../database/db.js'
 
-import { Tweet } from './Tweets.js'
-
 export const User = sequelize.define('users', {
   id: {
     type: DataTypes.UUID,
@@ -20,8 +18,9 @@ export const User = sequelize.define('users', {
   username: {
     type: DataTypes.STRING(60),
     allowNull: false,
+    unique: true,
   },
-  state: {
+  is_active: {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
   },
@@ -30,11 +29,11 @@ export const User = sequelize.define('users', {
     allowNull: false,
   },
   avatar: {
-    type: DataTypes.BLOB,
+    type: DataTypes.STRING,
     allowNull: true,
   },
   cover: {
-    type: DataTypes.BLOB,
+    type: DataTypes.STRING,
     allowNull: true,
   },
   biography: {
@@ -45,14 +44,4 @@ export const User = sequelize.define('users', {
     type: DataTypes.STRING(120),
     allowNull: true,
   },
-})
-
-User.hasMany(Tweet, {
-  foreignKey: 'userId',
-  sourceKey: 'id',
-})
-
-Tweet.belongsTo(User, {
-  foreignKey: 'userId',
-  targetKey: 'id',
 })

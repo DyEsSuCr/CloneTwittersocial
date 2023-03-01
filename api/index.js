@@ -3,6 +3,7 @@ import { sequelize } from './database/db.js'
 
 import './models/Tweets.js'
 import './models/Users.js'
+import './models/Asociations.js'
 
 async function main() {
   try {

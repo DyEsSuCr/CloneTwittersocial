@@ -1,13 +1,22 @@
-// NOTE: Imports
+// NOTE: Thirds
 import express from 'express'
 import cors from 'cors'
 
+// NOTE: Node
+// import path from 'path'
+// import { fileURLToPath } from 'url'
+
+// NOTE: Local
 import { port } from './config.js'
 
 import usersRoutes from './routes/users.routes.js'
 import tweetsRoutes from './routes/tweets.routes.js'
 
-// NOTE: App
+// NOTE: Variables
+// const __filename = fileURLToPath(import.meta.url)
+// const __dirname = path.dirname(__filename)
+
+// NOTE: App Init
 const app = express()
 
 // NOTE: Settings
@@ -20,6 +29,9 @@ app.use(cors())
 // NOTE: Routes
 app.use('/api', usersRoutes)
 app.use('/api', tweetsRoutes)
+
+// NOTE: Static Files
+// app.use(express.static(path.join(__dirname, 'public')))
 
 app.use((req, res) => {
   res.status(404).json({
