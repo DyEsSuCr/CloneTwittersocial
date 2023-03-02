@@ -2,6 +2,18 @@ import { Link } from 'react-router-dom'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 export const SignIn = () => {
+  const login = async (data) => {
+    const res = await fetch('http://localhost:3000/api/signin/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+
+    const token = await res.json()
+  }
+
   return (
     <div className="flex justify-center items-center min-h-screen">
       <Formik
@@ -17,16 +29,11 @@ export const SignIn = () => {
 
           if (!values.password) errors.password = 'Password required'
 
-          if (
-            !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(values.password)
-          ) {
-            errors.password =
-              'Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.'
-          }
-
           return errors
         }}
-        onSubmit={(values, { resetForm }) => {
+        onSubmit={async (values, { resetForm }) => {
+          login(values)
+
           resetForm()
         }}
       >

@@ -10,3 +10,8 @@ export const SignUp = () => {
     </div>
   )
 }
+
+if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(values.password)) {
+  errors.password =
+    'Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.'
+}
