@@ -7,7 +7,7 @@ import './models/Asociations.js'
 
 async function main() {
   try {
-    await sequelize.sync({ force: true })
+    await sequelize.sync({ force: false })
 
     app.listen(app.get('port'), () => {
       console.log(`Server on port ${app.get('port')}`)

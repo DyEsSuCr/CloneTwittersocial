@@ -8,9 +8,7 @@ import { fileURLToPath } from 'url'
 
 // NOTE: Local
 import { port } from './config.js'
-
-import usersRoutes from './routes/users.js'
-import tweetsRoutes from './routes/tweets.js'
+import { authRoutes, usersRoutes, tweetsRoutes } from './routes/index.js'
 
 // NOTE: Variables
 const __filename = fileURLToPath(import.meta.url)
@@ -29,6 +27,7 @@ app.use(cors())
 // NOTE: Routes
 app.use('/api', usersRoutes)
 app.use('/api', tweetsRoutes)
+app.use('/api', authRoutes)
 
 // NOTE: Static Files
 app.use(express.static(path.join(__dirname, 'public')))
