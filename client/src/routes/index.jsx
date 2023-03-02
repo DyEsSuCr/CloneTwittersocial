@@ -1,10 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom'
 
-import { Root } from '../layouts/Root'
 import { Error } from '../routes/Error'
-
-import { SignUp } from '../pages/SignUp.jsx'
-import { SignIn } from '../pages/SignIn.jsx'
+import { Root } from '../layouts/Root'
+import { Home } from '../layouts/Home'
+import { SignUp } from '../pages/SignUp'
+import { SignIn } from '../pages/SignIn'
 
 export const router = createBrowserRouter([
   {
@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <h1>Index</h1>,
+        element: <Home />,
       },
       {
         path: '/signin',
