@@ -1,17 +1,47 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { initialValues, validateFields } from '../validations/signup'
 
 export const SignUp = () => {
+  const [succes, setSucces] = useState(true)
+
   return (
-    <div>
-      <h1>SignUp</h1>
-      <Link to={'/signin'} className="text-indigo-700">
-        signin
-      </Link>
+    <div className="flex justify-center items-center min-h-screen">
+      <Formik
+        initialValues={initialValues}
+        validate={validateFields}
+        onSubmit={() => {
+          setSucces(true)
+          setTimeout(() => setSucces(false), 5000)
+        }}
+      >
+        {({ errors }) => (
+          <Form className="flex flex-col gap-4 shadow-lg shadow-dark-gray p-4 rounded-lg">
+            <h1 className="text-2xl font-semibold text-center">SignUp</h1>
+
+            <Field type="username" name="username" placeholder="Username" />
+            <ErrorMessage name="username" component={() => <div> {errors.username} </div>} />
+
+            <Field type="email" name="email" placeholder="Email" />
+            <ErrorMessage name="email" component={() => <div> {errors.email} </div>} />
+
+            <Field type="password" name="password1" placeholder="Password" />
+            <ErrorMessage name="password1" component={() => <div> {errors.password1} </div>} />
+
+            <Field type="password" name="password2" placeholder="Confirm password" />
+            <ErrorMessage name="password2" component={() => <div> {errors.password2} </div>} />
+
+            <button type="submit">Enviar</button>
+
+            {!succes && <p>Registrado</p>}
+
+            <Link to={'/signin'} className="text-indigo-700 mx-auto">
+              signin
+            </Link>
+          </Form>
+        )}
+      </Formik>
     </div>
   )
-}
-
-if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(values.password)) {
-  errors.password =
-    'Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.'
 }
