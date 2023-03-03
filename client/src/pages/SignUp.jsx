@@ -6,12 +6,26 @@ import { initialValues, validateFields } from '../validations/signup'
 export const SignUp = () => {
   const [succes, setSucces] = useState(true)
 
+  const createUser = async (data) => {
+    const res = await fetch('http://localhost:3000/api/signup/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+
+    const token = await res.json()
+    console.log(token)
+  }
+
   return (
     <div className="flex justify-center items-center min-h-screen">
       <Formik
         initialValues={initialValues}
         validate={validateFields}
-        onSubmit={() => {
+        onSubmit={async (values) => {
+          createUser(values)
           setSucces(true)
           setTimeout(() => setSucces(false), 5000)
         }}
@@ -26,11 +40,11 @@ export const SignUp = () => {
             <Field type="email" name="email" placeholder="Email" />
             <ErrorMessage name="email" component={() => <div> {errors.email} </div>} />
 
-            <Field type="password" name="password1" placeholder="Password" />
-            <ErrorMessage name="password1" component={() => <div> {errors.password1} </div>} />
+            <Field type="password" name="password" placeholder="Password" />
+            <ErrorMessage name="password" component={() => <div> {errors.password} </div>} />
 
-            <Field type="password" name="password2" placeholder="Confirm password" />
-            <ErrorMessage name="password2" component={() => <div> {errors.password2} </div>} />
+            <Field type="password" name="confirmPassword" placeholder="Confirm password" />
+            <ErrorMessage name="confirmPassword" component={() => <div> {errors.confirmPassword} </div>} />
 
             <button type="submit">Enviar</button>
 

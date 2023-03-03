@@ -4,19 +4,23 @@ import bcrypt from 'bcryptjs'
 import { User } from '../models/Users.js'
 
 export const signUp = async (req, res) => {
-  const { username, email, password } = req.body
+  try {
+    const { username, email, password } = req.body
 
-  const newUser = await User.create({
-    username,
-    email,
-    password,
-  })
+    const newUser = await User.create({
+      username,
+      email,
+      password,
+    })
 
-  const token = jwt.sign({ id: newUser.id }, process.env.SECRET, {
-    expiresIn: 86400,
-  })
+    const token = jwt.sign({ id: newUser.id }, process.env.SECRET, {
+      expiresIn: 86400,
+    })
 
-  res.status(200).json({ user: newUser, token })
+    res.status(200).json({ user: newUser, token })
+  } catch (err) {
+    res.status(500).json({ messaje: err })
+  }
 }
 
 export const signIn = async (req, res) => {

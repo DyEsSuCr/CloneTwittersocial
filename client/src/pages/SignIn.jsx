@@ -13,6 +13,7 @@ export const SignIn = () => {
     })
 
     const token = await res.json()
+    console.log(token)
   }
 
   return (

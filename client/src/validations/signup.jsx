@@ -1,12 +1,12 @@
 export const initialValues = {
   username: '',
   email: '',
-  password1: '',
-  password2: '',
+  password: '',
+  confirmPassword: '',
 }
 
 export const validateFields = (values) => {
-  const { username, email, password1, password2 } = values
+  const { username, email, password, confirmPassword } = values
 
   let errors = {}
 
@@ -22,17 +22,17 @@ export const validateFields = (values) => {
     errors.email = 'Invalid email address'
   }
 
-  if (!password1) {
-    errors.password1 = 'Passoword required'
-  } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password1)) {
-    errors.password1 =
+  if (!password) {
+    errors.password = 'Passoword required'
+  } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password)) {
+    errors.password =
       'Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.'
   }
 
-  if (!password2) {
-    errors.password2 = 'Confirm passoword'
-  } else if (password2 != password1) {
-    errors.password2 = 'Passwords do not match'
+  if (!confirmPassword) {
+    errors.confirmPassword = 'Confirm passoword'
+  } else if (confirmPassword != password) {
+    errors.confirmPassword = 'Passwords do not match'
   }
 
   return errors
