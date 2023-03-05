@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import { User } from '../models/Users.js'
 
 export const veryfyToken = async (req, res, next) => {
-  const token = req.headers['x-access-token']
+  const token = req.headers['authorization']
 
   try {
     if (!token) return res.status(403).json({ messaje: 'No token provided' })
