@@ -31,11 +31,11 @@ export const signIn = async (req, res) => {
       },
     })
 
-    if (!userFound) return res.status(200).json({ messaje: 'User not found' })
+    if (!userFound) return res.status(404).json({ messaje: 'User not found' })
 
     const comparePassword = await bcrypt.compare(req.body.password, userFound.password)
 
-    if (!comparePassword) return res.status(200).json({ messaje: 'Password not match' })
+    if (!comparePassword) return res.status(401).json({ messaje: 'Password not match' })
 
     const tojtw = jwt.sign({ id: userFound.id }, process.env.SECRET, {
       expiresIn: 86400,
