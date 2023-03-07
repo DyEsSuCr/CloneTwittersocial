@@ -5,7 +5,8 @@ import { Root } from '../layouts/Root'
 import { Home } from '../layouts/Home'
 import { SignUp } from '../pages/SignUp'
 import { SignIn } from '../pages/SignIn'
-import { Profile } from '../pages/Profile'
+import { Profiles } from '../components/Profiles'
+import { Profile, loaderProfile } from '../pages/Profile'
 
 export const router = createBrowserRouter([
   {
@@ -26,8 +27,13 @@ export const router = createBrowserRouter([
         element: <SignUp />,
       },
       {
-        path: '/profile',
+        path: '/profiles/',
+        element: <Profiles />,
+      },
+      {
+        path: '/profile/:username',
         element: <Profile />,
+        loader: loaderProfile,
       },
     ],
   },

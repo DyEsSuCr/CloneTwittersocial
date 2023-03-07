@@ -4,10 +4,10 @@ import { veryfyToken } from '../middlewares/authorization.js'
 
 const router = Router()
 
-router.get('/users/:id', getUser)
+router.get('/users/:username', getUser)
 router.get('/users/', getUsers)
 router.post('/users/', veryfyToken, postUsers)
-router.put('/users/:id', putUsers)
-router.delete('/users/:id', delUsers)
+router.put('/users/:username', putUsers)
+router.delete('/users/:username', delUsers)
 
 export default router

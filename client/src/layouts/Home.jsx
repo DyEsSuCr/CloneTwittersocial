@@ -11,6 +11,9 @@ export const Home = () => {
         <NavLink to={'/signin'} className="text-black text-4xl hover:text-dark-gray duration-300">
           Signin
         </NavLink>
+        <NavLink to={'profile/dyessucr'} className="text-black text-4xl hover:text-dark-gray duration-300">
+          Explore
+        </NavLink>
       </nav>
       <a
         href="https://acortar.link/OZVlzc"

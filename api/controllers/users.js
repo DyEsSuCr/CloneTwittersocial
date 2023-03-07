@@ -1,7 +1,20 @@
 import { User } from '../models/Users.js'
 
 export const getUser = async (req, res) => {
-  res.json({ messaje: 'GET User' })
+  try {
+    const user = await User.findOne({
+      where: {
+        username: req.params.username,
+      },
+      attributes: {
+        exclude: ['is_active', 'password', 'updatedAt'],
+      },
+    })
+
+    res.status(200).json(user)
+  } catch (err) {
+    res.status(404).json({ messaje: 'Profile Not Found', error: err })
+  }
 }
 
 export const getUsers = async (req, res) => {
