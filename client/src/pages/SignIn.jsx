@@ -13,12 +13,13 @@ export const SignIn = () => {
     })
 
     const token = await res.json()
+    console.log(token)
 
-    if (token.error) {
+    /* if (token.error) {
       return
     } else {
       document.cookie = `token=${token.token}; max-age=${60 * 5} path=/; samesite=strict`
-    }
+    } */
   }
 
   return (

@@ -1,6 +1,7 @@
 // NOTE: Thirds
 import express from 'express'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 
 // NOTE: Node
 import path from 'path'
@@ -21,6 +22,7 @@ const app = express()
 app.set('port', port)
 
 // NOTE: MiddleWares
+app.use(cookieParser())
 app.use(express.json())
 app.use(cors())
 

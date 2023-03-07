@@ -8,8 +8,8 @@ export const validateSignUp = [
     .notEmpty()
     .isLength({ min: 8, max: 30 })
     .custom(async (value, { req }) => {
-      const email = await User.findOne({ where: { email: req.body.email } })
-      if (email) throw new Error('The email already exists')
+      const username = await User.findOne({ where: { username: value } })
+      if (username) throw new Error('The user already exists')
 
       return true
     }),
@@ -20,8 +20,8 @@ export const validateSignUp = [
     .notEmpty()
     .isEmail()
     .custom(async (value, { req }) => {
-      const username = await User.findOne({ where: { username: req.body.username } })
-      if (username) throw new Error('The user already exists')
+      const email = await User.findOne({ where: { email: value } })
+      if (email) throw new Error('The email already exists')
 
       return true
     }),
