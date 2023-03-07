@@ -5,10 +5,10 @@ export const Comment = sequelize.define('comments', {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
-    defaultValue: DataTypes.UUIDV4,
+    defaultValue: DataTypes.UUIDV4
   },
   comment: {
     type: DataTypes.STRING(255),
-    allowNull: false,
-  },
+    allowNull: false
+  }
 })

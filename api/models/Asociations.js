@@ -4,10 +4,10 @@ import { Comment } from './Comments.js'
 
 User.hasMany(Tweet, {
   foreignKey: 'userId',
-  sourceKey: 'id',
+  sourceKey: 'id'
 })
 
 Tweet.belongsTo(User, {
   foreignKey: 'userId',
-  targetKey: 'id',
+  targetKey: 'id'
 })

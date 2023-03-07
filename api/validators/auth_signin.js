@@ -11,8 +11,8 @@ export const validateSignIn = [
     .custom(async (value, { req }) => {
       const userFound = await User.findOne({
         where: {
-          email: value,
-        },
+          email: value
+        }
       })
 
       if (!userFound) throw new Error('User not found')
@@ -27,8 +27,8 @@ export const validateSignIn = [
     .custom(async (value, { req }) => {
       const userFound = await User.findOne({
         where: {
-          email: req.body.email,
-        },
+          email: req.body.email
+        }
       })
 
       const comparePassword = await bcrypt.compare(value, userFound.password)
@@ -45,5 +45,5 @@ export const validateSignIn = [
     } catch (err) {
       res.status(403).json({ error: err.array() })
     }
-  },
+  }
 ]

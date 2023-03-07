@@ -5,7 +5,7 @@ import './models/Tweets.js'
 import './models/Users.js'
 import './models/Asociations.js'
 
-async function main() {
+async function main () {
   try {
     await sequelize.sync({ force: false })
 

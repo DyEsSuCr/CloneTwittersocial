@@ -35,5 +35,5 @@ export const validateSignUp = [
     } catch (err) {
       res.status(403).json({ error: err.array() })
     }
-  },
+  }
 ]

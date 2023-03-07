@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use((req, res) => {
   res.status(404).json({
-    messaje: 'Route Not Foud',
+    messaje: 'Route Not Foud'
   })
 })
 

@@ -4,11 +4,11 @@ export const getUser = async (req, res) => {
   try {
     const user = await User.findOne({
       where: {
-        username: req.params.username,
+        username: req.params.username
       },
       attributes: {
-        exclude: ['is_active', 'password', 'updatedAt'],
-      },
+        exclude: ['is_active', 'password', 'updatedAt']
+      }
     })
 
     res.status(200).json(user)
@@ -21,11 +21,11 @@ export const getUsers = async (req, res) => {
   try {
     const users = await User.findAll({
       where: {
-        is_active: true,
+        is_active: true
       },
       attributes: {
-        exclude: ['is_active', 'password', 'updatedAt'],
-      },
+        exclude: ['is_active', 'password', 'updatedAt']
+      }
     })
 
     if (users.length <= 0) return res.status(200).json({ messaje: 'No exist users' })

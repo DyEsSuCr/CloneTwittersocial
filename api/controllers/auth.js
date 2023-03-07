@@ -7,11 +7,11 @@ export const signUp = async (req, res) => {
     const user = await User.create({
       username: req.body.username,
       email: req.body.email,
-      password: req.body.password,
+      password: req.body.password
     })
 
     const token = jwt.sign({ id: user.id }, process.env.SECRET, {
-      expiresIn: 86400,
+      expiresIn: 86400
     })
 
     const { password, ...userData } = user.dataValues
@@ -26,15 +26,15 @@ export const signIn = async (req, res) => {
   try {
     const user = await User.findOne({
       where: {
-        email: req.body.email,
+        email: req.body.email
       },
       attributes: {
-        exclude: ['is_active', 'password', 'updatedAt'],
-      },
+        exclude: ['is_active', 'password', 'updatedAt']
+      }
     })
 
     const token = jwt.sign({ id: user.id }, process.env.SECRET, {
-      expiresIn: 86400,
+      expiresIn: 86400
     })
 
     res.cookie('access_token', token, { httpOnly: true }).status(200).json({ user })

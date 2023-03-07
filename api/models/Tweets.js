@@ -5,14 +5,14 @@ export const Tweet = sequelize.define('tweets', {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
-    defaultValue: DataTypes.UUIDV4,
+    defaultValue: DataTypes.UUIDV4
   },
   tweet: {
     type: DataTypes.STRING(180),
-    allowNull: false,
+    allowNull: false
   },
   state: {
     type: DataTypes.BOOLEAN,
-    defaultValue: true,
-  },
+    defaultValue: true
+  }
 })
