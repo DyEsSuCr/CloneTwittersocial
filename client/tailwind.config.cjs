@@ -9,9 +9,9 @@ module.exports = {
         'dark-gray': '#657786',
         'light-gray': '#AAB8C2',
         'ex-gray': '#E1E8ED',
-        'exe-gray': '#F5F8FA',
-      },
-    },
+        'exe-gray': '#F5F8FA'
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 }

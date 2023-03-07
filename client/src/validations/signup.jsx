@@ -2,13 +2,13 @@ export const initialValues = {
   username: '',
   email: '',
   password: '',
-  confirmPassword: '',
+  confirmPassword: ''
 }
 
 export const validateFields = (values) => {
   const { username, email, password, confirmPassword } = values
 
-  let errors = {}
+  const errors = {}
 
   if (!username) {
     errors.username = 'Username required'
@@ -31,7 +31,7 @@ export const validateFields = (values) => {
 
   if (!confirmPassword) {
     errors.confirmPassword = 'Confirm passoword'
-  } else if (confirmPassword != password) {
+  } else if (confirmPassword !== password) {
     errors.confirmPassword = 'Passwords do not match'
   }
 

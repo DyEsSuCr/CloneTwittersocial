@@ -6,8 +6,8 @@ export const Profile = () => {
 
   return (
     <div>
-      <h1 className="text-blue font-semibold ">Profile</h1>
-      <p className="mb-6"> {profile.username}</p>
+      <h1 className='text-blue font-semibold '>Profile</h1>
+      <p className='mb-6'> {profile.username}</p>
 
       <h1>more prifles</h1>
       <Profiles />

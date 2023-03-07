@@ -3,7 +3,7 @@ export const initialValues = { password: '', email: '' }
 export const validateFields = (values) => {
   const { email, password } = values
 
-  let errors = {}
+  const errors = {}
 
   if (!email) {
     errors.email = 'Email required'

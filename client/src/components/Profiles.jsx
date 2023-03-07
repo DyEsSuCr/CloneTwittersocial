@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import { UserContext } from '../context/UserContext'
-import { Link } from 'react-router-dom'
-import { Outlet } from 'react-router-dom'
+import { Outlet, Link } from 'react-router-dom'
 
 export const Profiles = () => {
   const { data } = useContext(UserContext)
@@ -13,7 +12,7 @@ export const Profiles = () => {
       {data?.map((user) => (
         <div key={user.id}>
           <p>{user.username}</p>
-          <Link to={`/profile/${user.username}`} className="text-red-600">
+          <Link to={`/profile/${user.username}`} className='text-red-600'>
             {user.username}
           </Link>
         </div>

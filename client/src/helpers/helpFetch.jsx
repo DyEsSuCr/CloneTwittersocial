@@ -1,7 +1,7 @@
 export const helpFetch = () => {
   const customFetch = (endpoint, options) => {
     const defaultHeader = {
-      accept: 'application/json',
+      accept: 'application/json'
     }
 
     const controller = new AbortController()
@@ -25,7 +25,7 @@ export const helpFetch = () => {
           : Promise.reject({
               err: true,
               status: res.status || '00',
-              statusText: res.statusText || 'Ocurrio un error',
+              statusText: res.statusText || 'Ocurrio un error'
             })
       )
       .catch((err) => err)
@@ -52,6 +52,6 @@ export const helpFetch = () => {
     get,
     post,
     put,
-    del,
+    del
   }
 }
