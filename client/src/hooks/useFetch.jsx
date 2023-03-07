@@ -8,19 +8,16 @@ export function useFetch(url) {
 
   useEffect(() => {
     const abortController = new AbortController()
-
     setController(abortController)
-    setLoading(true)
 
     fetch(url, { signal: abortController.signal })
-    setLoading(true)
-      .then((res) => res.json())
-      .then((data) => setData(data))
-      .catch((err) => {
-        if (err.name === 'AbortError') {
-          console.log('Request cancelled')
+      .then((response) => response.json())
+      .then((json) => setData(json))
+      .catch((error) => {
+        if (error.name === 'AbortError') {
+          console.log('Cancelled request')
         } else {
-          setError(err)
+          setError(error)
         }
       })
       .finally(() => setLoading(false))
@@ -31,7 +28,7 @@ export function useFetch(url) {
   const handleCancelRequest = () => {
     if (controller) {
       controller.abort()
-      setError('Request cancelled')
+      setError('Cancelled Request')
     }
   }
 

@@ -5,6 +5,7 @@ import { Root } from '../layouts/Root'
 import { Home } from '../layouts/Home'
 import { SignUp } from '../pages/SignUp'
 import { SignIn } from '../pages/SignIn'
+import { Profile } from '../pages/Profile'
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: '/signup',
         element: <SignUp />,
+      },
+      {
+        path: '/profile',
+        element: <Profile />,
       },
     ],
   },
