@@ -16,7 +16,7 @@ export const signUp = async (req, res) => {
 
     const { password, ...userData } = user.dataValues
 
-    res.cookie('access_token', token, { httpOnly: true }).status(200).json({ userData })
+    res.cookie('access_token', token, { httpOnly: true }).status(200).json({ user: userData })
   } catch (err) {
     res.status(404).json({ err })
   }

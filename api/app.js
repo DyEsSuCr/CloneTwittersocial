@@ -24,7 +24,7 @@ app.set('port', port)
 // NOTE: MiddleWares
 app.use(cookieParser())
 app.use(express.json())
-app.use(cors())
+app.use(cors({ credentials: true, origin: 'http://localhost:5173' }))
 
 // NOTE: Routes
 app.use('/api', usersRoutes)
