@@ -14,7 +14,9 @@ export const signUp = async (req, res) => {
       expiresIn: 86400,
     })
 
-    res.cookie('access_token', token, { httpOnly: true }).status(200).json({ user })
+    const { password, ...userData } = user.dataValues
+
+    res.cookie('access_token', token, { httpOnly: true }).status(200).json({ userData })
   } catch (err) {
     res.status(404).json({ err })
   }
