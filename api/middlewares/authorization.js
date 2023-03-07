@@ -8,9 +8,15 @@ export const veryfyToken = async (req, res, next) => {
     if (!token) return res.status(403).json({ messaje: 'No token provided' })
 
     const decoded = jwt.verify(token, process.env.SECRET)
-    const user = await User.findByPk(decoded.id, { password: 0 })
+    const user = await User.findByPk(decoded.id, {
+      attributes: {
+        exclude: ['password'],
+      },
+    })
 
     if (!user) return res.status(404).json({ messaje: 'User not found' })
+
+    req.user = user
 
     next()
   } catch (err) {
