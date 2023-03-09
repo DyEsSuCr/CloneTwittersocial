@@ -3,10 +3,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import { Error } from '../routes/Error'
 import { Root } from '../layouts/Root'
 import { Home } from '../layouts/Home'
-import { SignUp } from '../pages/SignUp'
-import { SignIn } from '../pages/SignIn'
-import { Profiles } from '../components/Profiles'
-import { Profile, loaderProfile } from '../pages/Profile'
+import { Pages } from '../pages/index'
 
 export const router = createBrowserRouter([
   {
@@ -20,20 +17,20 @@ export const router = createBrowserRouter([
       },
       {
         path: '/signin',
-        element: <SignIn />
+        element: <Pages.SignIn />
       },
       {
         path: '/signup',
-        element: <SignUp />
-      },
-      {
-        path: '/profiles/',
-        element: <Profiles />
+        element: <Pages.SignUp />
       },
       {
         path: '/profile/:username',
-        element: <Profile />,
-        loader: loaderProfile
+        element: <Pages.Profile />,
+        loader: Pages.loaderProfile
+      },
+      {
+        path: '/explore',
+        element: <Pages.Explore />
       }
     ]
   }

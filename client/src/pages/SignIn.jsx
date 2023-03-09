@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { initialValues, validateFields } from '../validations/signin'
 import { useContext } from 'react'
 import { AuthUserContext } from '../context/index'
 
 export const SignIn = () => {
-  const { setAuthUser } = useContext(AuthUserContext)
+  const { authUser, setAuthUser } = useContext(AuthUserContext)
 
   const login = async (data) => {
     const res = await fetch('http://localhost:3000/api/signin/', {
@@ -36,6 +36,7 @@ export const SignIn = () => {
 
   return (
     <div className='flex justify-center items-center min-h-screen'>
+      {authUser.auth && <Navigate to={`/profile/${authUser.username}`} />}
       <Formik
         initialValues={initialValues}
         validate={validateFields}
