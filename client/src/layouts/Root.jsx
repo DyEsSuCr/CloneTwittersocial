@@ -1,12 +1,14 @@
 import { Outlet } from 'react-router-dom'
-import { UserProvider } from '../context/UserContext'
+import { AuthUserProvider, UserProvider } from '../context/index'
 
 export function Root () {
   return (
     <main>
-      <UserProvider>
-        <Outlet />
-      </UserProvider>
+      <AuthUserProvider>
+        <UserProvider>
+          <Outlet />
+        </UserProvider>
+      </AuthUserProvider>
     </main>
   )
 }

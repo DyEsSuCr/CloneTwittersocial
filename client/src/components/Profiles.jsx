@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { UserContext } from '../context/UserContext'
+import { UserContext } from '../context/index'
 import { Outlet, Link } from 'react-router-dom'
 
 export const Profiles = () => {

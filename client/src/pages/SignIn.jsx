@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { initialValues, validateFields } from '../validations/signin'
+import { useContext } from 'react'
+import { AuthUserContext } from '../context/index'
 
 export const SignIn = () => {
+  const { setAuthUser } = useContext(AuthUserContext)
+
   const login = async (data) => {
     const res = await fetch('http://localhost:3000/api/signin/', {
       method: 'POST',
@@ -14,13 +18,20 @@ export const SignIn = () => {
     })
 
     const token = await res.json()
-    console.log(token)
 
-    /* if (token.error) {
-      return
-    } else {
-      document.cookie = `token=${token.token}; max-age=${60 * 5} path=/; samesite=strict`
-    } */
+    const { username, email } = token.user
+
+    setAuthUser({
+      username,
+      email,
+      auth: true
+    })
+  }
+
+  const logout = () => {
+    fetch('http://localhost:3000/api/logout/', {
+      credentials: 'include'
+    })
   }
 
   return (
@@ -47,6 +58,8 @@ export const SignIn = () => {
             <Link to='/signup' className='text-indigo-700 mx-auto'>
               signup
             </Link>
+
+            <button type='button' onClick={logout}>clearCokkie</button>
           </Form>
         )}
       </Formik>
