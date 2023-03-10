@@ -42,3 +42,7 @@ export const signIn = async (req, res) => {
     res.status(404).json({ err })
   }
 }
+
+export const authLogin = async (req, res) => {
+  res.json({ user: req.user })
+}

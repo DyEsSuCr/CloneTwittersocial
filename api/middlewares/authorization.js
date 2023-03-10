@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import { User } from '../models/Users.js'
 
 export const verifyToken = async (req, res, next) => {
-  const token = req.headers.authorization
+  const token = req.headers.authorization || req.cookies.access_token
 
   try {
     if (!token) return res.status(403).json({ messaje: 'No token provided' })
