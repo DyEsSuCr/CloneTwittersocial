@@ -17,9 +17,9 @@ export const SignIn = () => {
       body: JSON.stringify(data)
     })
 
-    const token = await res.json()
+    const user = await res.json()
 
-    const { username, email } = token.user
+    const { username, email } = user.user
 
     setAuthUser({
       username,

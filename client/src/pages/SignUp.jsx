@@ -1,10 +1,12 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useContext } from 'react'
+import { Link, Navigate } from 'react-router-dom'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { initialValues, validateFields } from '../validations/signup'
+import { AuthUserContext } from '../context/index'
 
 export const SignUp = () => {
   const [succes, setSucces] = useState(true)
+  const { authUser, setAuthUser } = useContext(AuthUserContext)
 
   const createUser = async (data) => {
     const res = await fetch('http://localhost:3000/api/signup/', {
@@ -16,12 +18,20 @@ export const SignUp = () => {
       body: JSON.stringify(data)
     })
 
-    const token = await res.json()
-    console.log(token)
+    const user = await res.json()
+
+    const { username, email } = user.user
+
+    setAuthUser({
+      username,
+      email,
+      auth: true
+    })
   }
 
   return (
     <div className='flex justify-center items-center min-h-screen'>
+      {authUser.auth && <Navigate to={`/profile/${authUser.username}`} />}
       <Formik
         initialValues={initialValues}
         validate={validateFields}
