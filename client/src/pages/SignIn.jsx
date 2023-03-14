@@ -19,13 +19,7 @@ export const SignIn = () => {
 
     const user = await res.json()
 
-    const { username, email } = user.user
-
-    setAuthUser({
-      username,
-      email,
-      auth: true
-    })
+    setAuthUser(user.user)
   }
 
   const logout = () => {
@@ -37,25 +31,14 @@ export const SignIn = () => {
   useEffect(() => {
     const authLogin = async (url) => {
       const res = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        credentials: 'include',
-        body: JSON.stringify({ name: 'hola' })
+        credentials: 'include'
       })
 
       const user = await res.json()
 
       if (user.messaje === 'No token provided') return
 
-      const { username, email } = user.user
-
-      setAuthUser({
-        username,
-        email,
-        auth: true
-      })
+      setAuthUser(user.user)
     }
 
     authLogin('http://localhost:3000/api/authlogin/')
@@ -63,7 +46,7 @@ export const SignIn = () => {
 
   return (
     <div className='flex justify-center items-center min-h-screen'>
-      {authUser.auth && <Navigate to={`/profile/${authUser.username}`} />}
+      {authUser && <Navigate to={`/profile/${authUser.username}`} />}
       <Formik
         initialValues={initialValues}
         validate={validateFields}
