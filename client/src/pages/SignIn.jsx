@@ -1,7 +1,7 @@
 import { Link, Navigate } from 'react-router-dom'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { initialValues, validateFields } from '../validations/signin'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { AuthUserContext } from '../context/index'
 
 export const SignIn = () => {
@@ -27,22 +27,6 @@ export const SignIn = () => {
       credentials: 'include'
     })
   }
-
-  useEffect(() => {
-    const authLogin = async (url) => {
-      const res = await fetch(url, {
-        credentials: 'include'
-      })
-
-      const user = await res.json()
-
-      if (user.messaje === 'No token provided') return
-
-      setAuthUser(user.user)
-    }
-
-    authLogin('http://localhost:3000/api/authlogin/')
-  }, [])
 
   return (
     <div className='flex justify-center items-center min-h-screen'>

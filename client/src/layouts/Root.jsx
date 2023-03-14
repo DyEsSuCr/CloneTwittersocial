@@ -1,14 +1,29 @@
 import { Outlet } from 'react-router-dom'
-import { AuthUserProvider, UserProvider } from '../context/index'
+import { AuthUserContext } from '../context/index'
+import { useContext, useEffect } from 'react'
 
 export function Root () {
+  const { setAuthUser } = useContext(AuthUserContext)
+
+  useEffect(() => {
+    const authLogin = async (url) => {
+      const res = await fetch(url, {
+        credentials: 'include'
+      })
+
+      const user = await res.json()
+
+      if (user.messaje) return
+
+      setAuthUser(user.user)
+    }
+
+    authLogin('http://localhost:3000/api/authlogin/')
+  }, [])
+
   return (
     <main>
-      <AuthUserProvider>
-        <UserProvider>
-          <Outlet />
-        </UserProvider>
-      </AuthUserProvider>
+      <Outlet />
     </main>
   )
 }

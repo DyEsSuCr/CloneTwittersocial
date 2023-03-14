@@ -1,15 +1,16 @@
 import { useContext } from 'react'
-import { UserContext } from '../context/index'
+import { UserContext, AuthUserContext } from '../context/index'
 import { Outlet, Link } from 'react-router-dom'
 
 export const Profiles = () => {
   const { data } = useContext(UserContext)
+  const { authUser } = useContext(AuthUserContext)
 
   return (
     <div>
       <Outlet />
 
-      {data?.map((user) => (
+      {data?.filter(user => user.username !== authUser?.username).map((user) => (
         <div key={user.id}>
           <p>{user.username}</p>
           <Link to={`/profile/${user.username}`} className='text-red-600'>

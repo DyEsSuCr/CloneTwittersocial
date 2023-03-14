@@ -20,6 +20,7 @@ export const verifyToken = async (req, res, next) => {
 
     next()
   } catch (err) {
+    res.clearCookie('access_token')
     res.status(401).json({ messaje: 'Unauthorized' })
   }
 }
