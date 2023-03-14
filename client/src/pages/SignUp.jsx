@@ -20,18 +20,12 @@ export const SignUp = () => {
 
     const user = await res.json()
 
-    const { username, email } = user.user
-
-    setAuthUser({
-      username,
-      email,
-      auth: true
-    })
+    setAuthUser(user.user)
   }
 
   return (
     <div className='flex justify-center items-center min-h-screen'>
-      {authUser.auth && <Navigate to={`/profile/${authUser.username}`} />}
+      {authUser && <Navigate to={`/profile/${authUser.username}`} />}
       <Formik
         initialValues={initialValues}
         validate={validateFields}
