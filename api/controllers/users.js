@@ -1,4 +1,5 @@
 import { User } from '../models/Users.js'
+import { Tweet } from '../models/Tweets.js'
 
 export const getUser = async (req, res) => {
   try {
@@ -46,4 +47,20 @@ export const putUsers = async (req, res) => {
 
 export const delUsers = async (req, res) => {
   res.json({ messaje: 'DELETE User' })
+}
+
+export const tweetsUser = async (req, res) => {
+  try {
+    const tweets = await Tweet.findAll({
+      where: {
+        userId: req.params.id
+      }
+    })
+
+    if (tweets.length <= 0) return res.status(200).json({ messaje: 'No tweets posted' })
+
+    res.status(200).json(tweets)
+  } catch (err) {
+    res.status(404).json({ error: err })
+  }
 }
