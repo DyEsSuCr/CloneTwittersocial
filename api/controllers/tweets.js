@@ -2,6 +2,17 @@ import { Tweet } from '../models/Tweets.js'
 
 export const getTweet = async (req, res) => {
   res.json({ messaje: 'GET Tweet' })
+  try {
+    const tweet = await Tweet.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+
+    res.status(200).json(tweet)
+  } catch (err) {
+    res.status(404).json({ messaje: 'Tweet Not Found', error: err })
+  }
 }
 
 export const getTweets = async (req, res) => {
