@@ -10,6 +10,9 @@ module.exports = {
         'light-gray': '#AAB8C2',
         'ex-gray': '#E1E8ED',
         'exe-gray': '#F5F8FA'
+      },
+      gridTemplateColumns: {
+        container: '1fr 2fr 1fr'
       }
     }
   },

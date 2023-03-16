@@ -25,7 +25,7 @@ export const SignUp = () => {
 
   return (
     <div className='flex justify-center items-center min-h-screen'>
-      {authUser && <Navigate to={`/profile/${authUser.username}`} />}
+      {authUser && <Navigate to={`/${authUser.username}`} />}
       <Formik
         initialValues={initialValues}
         validate={validateFields}

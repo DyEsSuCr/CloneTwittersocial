@@ -3,7 +3,9 @@ import { createBrowserRouter } from 'react-router-dom'
 import { Error } from '../routes/Error'
 import { Root } from '../layouts/Root'
 import { Home } from '../layouts/Home'
+import { App } from '../layouts/App'
 import { Pages } from '../pages/index'
+import { Explore } from '../pages/Explore'
 
 export const router = createBrowserRouter([
   {
@@ -24,13 +26,19 @@ export const router = createBrowserRouter([
         element: <Pages.SignUp />
       },
       {
-        path: '/profile/:username',
-        element: <Pages.Profile />,
-        loader: Pages.loaderProfile
-      },
-      {
-        path: '/explore',
-        element: <Pages.Explore />
+        path: '/',
+        element: <App />,
+        children: [
+          {
+            path: '/:username',
+            element: <Pages.Profile />,
+            loader: Pages.loaderProfile
+          },
+          {
+            path: '/explore',
+            element: <Explore />
+          }
+        ]
       }
     ]
   }
