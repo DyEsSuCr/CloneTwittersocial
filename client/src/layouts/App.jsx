@@ -1,12 +1,12 @@
 import { Outlet } from 'react-router-dom'
 import { Notices } from '../components/Notices'
-import { Sidebar } from '../components/Sidebar'
+import { Sidebars } from '../components/Sidebar/Sidebars'
 
 export function App () {
   return (
     <div className='flex justify-center min-h-screen'>
       <div className='w-[1280px] grid grid-cols-container gap-6'>
-        <Sidebar />
+        <Sidebars />
         <Outlet />
         <Notices />
       </div>

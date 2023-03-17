@@ -11,7 +11,7 @@ export const Home = () => {
         <NavLink to='/signin' className='text-black text-4xl hover:text-dark-gray duration-300'>
           Signin
         </NavLink>
-        <NavLink to='profile/dyessucr' className='text-black text-4xl hover:text-dark-gray duration-300'>
+        <NavLink to='/explore' className='text-black text-4xl hover:text-dark-gray duration-300'>
           Explore
         </NavLink>
       </nav>
