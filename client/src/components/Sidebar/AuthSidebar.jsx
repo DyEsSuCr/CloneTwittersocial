@@ -1,6 +1,20 @@
+import { Link } from 'react-router-dom'
 
-export function AuthSidebar () {
+export function AuthSidebar ({ authUser }) {
   return (
-    <h1>Logeado</h1>
+    <>
+      <div className='flex flex-col gap-2'>
+        <Link to='/explore'>
+          Home
+        </Link>
+        <Link to='/explore'>
+          Explore
+        </Link>
+        <Link to={authUser.username}>
+          Profile
+        </Link>
+      </div>
+      <div>config</div>
+    </>
   )
 }

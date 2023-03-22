@@ -8,7 +8,7 @@ export const Sidebars = () => {
 
   return (
     <div className='flex flex-col justify-between'>
-      {authUser ? <AuthSidebar /> : <NoAuthSidebar />}
+      {authUser ? <AuthSidebar authUser={authUser} /> : <NoAuthSidebar />}
     </div>
   )
 }
