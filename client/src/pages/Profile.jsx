@@ -1,5 +1,4 @@
 import { useLoaderData } from 'react-router-dom'
-import { Profiles } from '../components/Profiles'
 
 export const Profile = () => {
   const { profile } = useLoaderData()
@@ -8,9 +7,6 @@ export const Profile = () => {
     <div>
       <h1 className='text-blue font-semibold '>Profile</h1>
       <p className='mb-6'> {profile.username}</p>
-
-      <h1>more prifles</h1>
-      <Profiles />
     </div>
   )
 }

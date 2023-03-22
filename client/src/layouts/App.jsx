@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import { Notices } from '../components/Notices'
+import { Notices } from '../components/Notices/Notices'
 import { Sidebars } from '../components/Sidebar/Sidebars'
 
 export function App () {
